@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     /// Label which shows the score of the Player.
     @IBOutlet weak var scoreLabel: UILabel!
     
-    private let color: [Int : UIColor] = [1 : #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1), 2 : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), 3 : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
+    private let color: [Int : UIColor] = [1 : #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), 2 : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), 3 : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) ]
     private let shape: [Int : String] = [1 : "■", 2 : "▲", 3 : "●"]
     private let fill: [Int : CGFloat] = [1 : 0.5, 2 : 1, 3 : 1]
     private let shade: [Int : CGFloat] = [1 : -3, 2 : -3, 3 : 2]
