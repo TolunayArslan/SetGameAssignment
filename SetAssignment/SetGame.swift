@@ -89,9 +89,10 @@ struct SetGame {
             // Check for Match
             playingCards[index].isSelected = true
             if isThereAMatch() {
-                
+                score += 2
                 return true
             } else {
+                score -= 1
                 return false
             }
         } else {
@@ -107,7 +108,6 @@ struct SetGame {
             playingCards[index] = card
         }
     }
-    
     
     mutating func deal3Cards() -> Bool {
         guard deck.deckOfCards.count >= 3 else { return false }
