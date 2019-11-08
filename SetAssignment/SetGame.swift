@@ -65,21 +65,18 @@ struct SetGame {
     }
     
     private func isThereAMatch() -> Bool {
-        var sumNumber = 0
-        var sumColor = 0
-        var sumShade = 0
-        var sumSymbol = 0
+        
+        var matrix = [Int]()
         for index in indexOfSelectedCards {
-            sumNumber += playingCards[index].matrix.number
-            sumColor += playingCards[index].matrix.color
-            sumShade += playingCards[index].matrix.shade
-            sumSymbol += playingCards[index].matrix.symbol
+            matrix[0] += playingCards[index].matrix.number
+            matrix[1] += playingCards[index].matrix.color
+            matrix[2] += playingCards[index].matrix.shade
+            matrix[3] += playingCards[index].matrix.symbol
         }
-        if sumNumber % 3 == 0 && sumColor % 3 == 0 && sumShade % 3 == 0 && sumSymbol % 3 == 0 {
-            return true
-        } else {
-            return false
-        }
+        
+        let anyMismatch = matrix.filter { $0 % 3 != 0 }
+        return anyMismatch.count == 0 ? true : false
+        
     }
     
     

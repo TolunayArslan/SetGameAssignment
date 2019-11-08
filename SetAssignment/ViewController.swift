@@ -36,8 +36,9 @@ class ViewController: UIViewController {
     
     // MARK: Actions
 
+    
+    /// Selects the tapped Button and checks for a Match and adjusts the UI.
     @IBAction func selectCard(_ sender: UIButton) {
-        
 
         let index: Int! = cardButtons.firstIndex(of: sender)
         
