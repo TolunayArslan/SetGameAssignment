@@ -15,11 +15,16 @@ struct SetGame {
     // MARK: Properties
     
     /// The score of the player.
-    var score = 0
+    var score = 0 {
+        didSet {
+            if score < 0 {
+                score = 0
+            }
+        }
+    }
     
     /// The deck of the game and it's logic.
     var deck = Deck()
-    
     
     /// The indexes of all selected cards.
     var indexOfSelectedCards: [Int] {
@@ -74,10 +79,12 @@ struct SetGame {
             matrix[3] += playingCards[index].matrix.symbol
         }
         
-        let anyMismatch = matrix.filter { $0 % 3 != 0 }
-        return anyMismatch.count == 0 ? true : false
+        let itemOfMatrix = matrix.filter { $0 % 3 != 0 }
+        return  itemOfMatrix.isThereAnyItem ? false : true
         
     }
+    
+    
     
     
     /// Selects the card and return true if there is a match, false if there is a mismatch, and nil if there were no cards to check.
@@ -100,7 +107,7 @@ struct SetGame {
     }
     
     mutating func replaceCard(at index: Int) {
-        
+
         if let card = deck.dealCard() {
             playingCards[index] = card
         }
@@ -198,8 +205,11 @@ struct Deck {
                    let randomIndex = Int(arc4random_uniform(UInt32(deckOfCards.count)))
                    deckOfCards.append(deckOfCards.remove(at: randomIndex))
                }
-      
+            }
+        }
+
+extension Array {
+    var isThereAnyItem: Bool {
+        return self.count == 0 ? false : true
     }
-    
-    
 }
